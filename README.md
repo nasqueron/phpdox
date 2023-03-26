@@ -6,66 +6,49 @@ This includes, but is not limited to, API documentation. The main focus is on en
 the generated documentation with additional details like code coverage, complexity information
 and more.
 
-[![Build Status](https://travis-ci.org/theseer/phpdox.svg?branch=master)](https://travis-ci.org/theseer/phpdox)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theseer/phpdox/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theseer/phpdox/?branch=master)
+About this repository
+---------------------
+
+phpDox upstream code doesn't work on PHP 8.1 or PHP 8.2. This repository contains:
+  - phpDox upstream
+  - fDOMDocument upstream in lib/ folder, with Git history fully preserved (without tags)
+  - fixes for PHP 8.1 and 8.2
+
+Our goal is to be able to run phpDox on our Jenkins CI infrastructure, under PHP 8.x.
+
+This repository only pretends to offer a working version of both libraries for PHP 8.x,
+and doesn't aim to stay compatible with PHP 5 or PHP 7.1 code.
+
+It can be especially helpful for users of the now unmaintained jenkins-php template
+by PHPUnit author Sebastian Bergmann  (sebastianbergmann/php-jenkins-template)
+as we test PHP 8 compliance with the CI jobs defined by this template.
+
 
 Requirements
 ------------
 
-- PHP Version 7.1+ (For PHP 5.5+, use phpDox 0.11.2)
+- PHP Version 7.4+
   - ext/dom
   - ext/xsl
   - ext/iconv and [libiconv version >= 2.12](http://www.gnu.org/software/libiconv/documentation/libiconv/iconv.1.html)
 - PHPParser [PHP Parser API](https://github.com/nikic/PHP-Parser)
-- [fDOMDocument](http://github.com/theseer/fDOMDocument)
 - [DirectoryScanner](http://github.com/theseer/DirectoryScanner)
 - [fXSL](http://github.com/theseer/fXSL)
 - [PHP_Timer](http://github.com/sebastianbergmann/php-timer)
 
 
-Phar Installation
------------------
-
-phpDox is shipping as a selfcontained executable phar archive. You can grab your copy from the
-[releases](https://github.com/theseer/phpdox/releases/latest) section or install using [phive](https://phar.io):
-
-    phive install phpdox
-
-You can now execute phpdox on the command line:
-
-    tools/phpdox --version
-
-If everything worked out, you should get an output like this:
-
-    phpDox 0.11.2 - Copyright (C) 2010 - 2018 by Arne Blankerts and Contributors
-
-_Note: Some Linux distributions ship PHP with ext/suhosin and disabled phar execution. To make use of phpDox in such an environment, you need to enable phar execution by adding phar to the executor white list: suhosin.executor.include.whitelist="phar"_
-
-
-Composer Installation
----------------------
-
-Additionally, phpDox can be installed via composer:
-
-    composer require --dev theseer/phpdox 
-
-You can now execute phpdox on the command line:
-
-    vendor/bin/phpdox --version
-
-If everything worked out, you should get an output like this:
-
-    phpDox 0.11.2 - Copyright (C) 2010 - 2018 by Arne Blankerts and Contributors
-
-
 Developer Installation
 ----------------------
 
-In case you want to go bleeding edge or hack on the source, you will have to clone this repository.
+First, clone this repository:
 
-    git clone git://github.com/theseer/phpdox.git
+    git clone git://github.com/nasqueron/phpdox.git
     composer install
 
+If you wish a phpdox command in your system:
+
+
+    ln -s /path/to/phpdox/phpdox /usr/local/bin/phpdox
 
 Usage Examples
 --------------

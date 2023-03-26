@@ -1,8 +1,11 @@
 # Changelog of phpDox
 
-## phpDox 0.12.1 (?? ??? 2019)
+## phpDox 0.13.0 (26 Mar 2023) - NASQUERON ONLY RELEASE
 
-Note: This release requires PHP 7.1+
+This release is for Nasqueron CI infrastructure,
+and is not an initiative of phpDox maintainer.
+
+Note: This release requires PHP 7.4+
 
 ### Changed
 * [#356](https://github.com/theseer/phpdox/issue/356): Added Exception to explicitly handle a potential null in SourceFile
@@ -10,6 +13,8 @@ Note: This release requires PHP 7.1+
 ### Fixed
 * [#361](https://github.com/theseer/phpdox/issue/361): Coverage does not contain correct values
 * [#233](https://github.com/theseer/phpdox/issue/233): native "callback" type is parsed as "object"
+* PHP 8.1 and PHP 8.2 compliance
+* fDOMDocument is now a part of this repository
 
 ### Merged
 * [#358](https://github.com/theseer/phpdox/pull/358): Fix typehint for callable (MacFJA)
