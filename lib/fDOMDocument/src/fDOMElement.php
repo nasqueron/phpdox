@@ -231,8 +231,7 @@ namespace TheSeer\fDOM {
          *
          * @return string
          */
-        #[\ReturnTypeWillChange]
-        public function getAttribute($attr, $default='') {
+        public function getAttribute($attr, $default='') : string {
             return $this->hasAttribute($attr) ? parent::getAttribute($attr) : $default;
         }
 
@@ -247,8 +246,7 @@ namespace TheSeer\fDOM {
          *
          * @return string
          */
-        #[\ReturnTypeWillChange]
-        public function getAttributeNS($ns, $attr, $default='') {
+        public function getAttributeNS($ns, $attr, $default='') : string {
             return $this->hasAttributeNS($ns, $attr) ? parent::getAttributeNS($ns, $attr) : $default;
         }
 
@@ -265,7 +263,6 @@ namespace TheSeer\fDOM {
          *
          * @see DOMElement::setAttribute()
          */
-        #[\ReturnTypeWillChange]
         public function setAttribute($attr, $value, $keepEntities=false) {
             if ($keepEntities === true) {
                 $attrNode = $this->ownerDocument->createAttribute($attr);
@@ -276,7 +273,7 @@ namespace TheSeer\fDOM {
                 $this->appendChild($attrNode);
                 return $attrNode;
             }
-            return parent::setAttribute($attr, $value);
+            return parent::setAttribute($attr, $value ?? "");
         }
 
         /**
@@ -292,8 +289,7 @@ namespace TheSeer\fDOM {
          * @return \DOMAttr|null
          * @see DOMElement::setAttribute()
          */
-        #[\ReturnTypeWillChange]
-        public function setAttributeNS($ns, $attr, $value, $keepEntities=false) {
+        public function setAttributeNS($ns, $attr, $value, $keepEntities=false) : void {
             if ($keepEntities === true) {
                 $attrNode = $this->ownerDocument->createAttributeNS($ns, $attr);
                 if (!$attrNode) {
@@ -301,9 +297,9 @@ namespace TheSeer\fDOM {
                 }
                 $attrNode->value = $value;
                 $this->appendChild($attrNode);
-                return $attrNode;
+                // return $attrNode;
             }
-            return parent::setAttributeNS($ns, $attr, $value);
+            parent::setAttributeNS($ns, $attr, $value);
         }
 
         /**

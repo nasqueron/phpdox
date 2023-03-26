@@ -90,8 +90,7 @@ namespace TheSeer\fDOM {
          *
          * @return \DOMNodeList
          */
-        #[\ReturnTypeWillChange]
-        public function query($q, \DOMNode $ctx = null, $registerNodeNS = true) {
+        public function query($q, \DOMNode $ctx = null, $registerNodeNS = true) : mixed {
             libxml_clear_errors();
             if (version_compare(PHP_VERSION, '5.3.3', '<') || strpos(PHP_VERSION, 'hiphop') || strpos(PHP_VERSION, 'hhvm')) {
                 $rc = parent::query($q, ($ctx instanceof \DOMNode) ? $ctx : $this->doc->documentElement);
@@ -114,8 +113,7 @@ namespace TheSeer\fDOM {
          *
          * @return mixed
          */
-        #[\ReturnTypeWillChange]
-        public function evaluate($q, \DOMNode $ctx = null, $registerNodeNS = true) {
+        public function evaluate($q, \DOMNode $ctx = null, $registerNodeNS = true) : mixed {
             libxml_clear_errors();
             if (version_compare(PHP_VERSION, '5.3.3', '<') || strpos(PHP_VERSION, 'hiphop') || strpos(PHP_VERSION, 'hhvm')) {
                 $rc = parent::evaluate($q, ($ctx instanceof \DOMNode) ? $ctx : $this->doc->documentElement);
