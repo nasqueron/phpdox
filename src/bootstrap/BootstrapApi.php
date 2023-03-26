@@ -65,6 +65,8 @@ class BootstrapApi {
      */
     private $backends = [];
 
+    private ProgressLogger $logger;
+
     /**
      * Constructor
      */
