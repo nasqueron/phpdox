@@ -416,6 +416,10 @@ class UnitCollectingVisitor extends NodeVisitorAbstract implements TypeAwareInte
             return;
         }
 
+        if (is_object($type)) {
+            $type = $type::class;
+        }
+
         $type = (string)$type;
 
         if (isset($this->aliasMap[$type])) {

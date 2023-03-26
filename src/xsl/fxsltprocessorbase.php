@@ -149,14 +149,16 @@ namespace TheSeer\fXSL {
          *
          * Extended version to throw exception on error
          */
-        public function importStylesheet($stylesheet) {
+        public function importStylesheet($stylesheet) : bool {
             if ($stylesheet->documentElement->namespaceURI != 'http://www.w3.org/1999/XSL/Transform') {
                 throw new fXSLTProcessorException(
                     "Namespace mismatch: Expected 'http://www.w3.org/1999/XSL/Transform' but '{$stylesheet->documentElement->namespaceURI}' found.",
                     fXSLTProcessorException::WrongNamespace
                 );
             }
+
             $this->stylesheet = $stylesheet;
+            return true;
         }
 
         /**
@@ -164,7 +166,7 @@ namespace TheSeer\fXSL {
          *
          * Extended version to enforce callability of fXSLProcessor::callbackHook and generally callable methods
          */
-        public function registerPHPFunctions($restrict = NULL) {
+        public function registerPHPFunctions($restrict = NULL) : void {
             if (is_string($restrict)) {
                 $restrict = array($restrict);
             }

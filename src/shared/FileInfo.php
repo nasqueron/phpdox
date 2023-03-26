@@ -1,7 +1,9 @@
 <?php declare(strict_types = 1);
 namespace TheSeer\phpDox;
 
-class FileInfo extends \SplFileInfo {
+use SplFileInfo;
+
+class FileInfo extends SplFileInfo {
     public function __toString(): string {
         return $this->getPathname();
     }
@@ -9,7 +11,7 @@ class FileInfo extends \SplFileInfo {
     /**
      * @throws FileInfoException
      */
-    public function getRealPath() {
+    public function getRealPath() : string|false {
         $path = parent::getRealPath();
 
         if (!$path) {
@@ -38,7 +40,7 @@ class FileInfo extends \SplFileInfo {
         return 'file://' . urlencode($result);
     }
 
-    public function getPath() {
+    public function getPath() : string {
         return $this->toUnix(parent::getPath());
     }
 
@@ -70,7 +72,7 @@ class FileInfo extends \SplFileInfo {
      *
      * @throws FileInfoException
      */
-    public function getFileInfo($class_name = null): void {
+    public function getFileInfo($class_name = null): SplFileInfo {
         throw new FileInfoException('getFileInfo not implemented', FileInfoException::NotImplemented);
     }
 
@@ -79,7 +81,7 @@ class FileInfo extends \SplFileInfo {
      *
      * @throws FileInfoException
      */
-    public function getPathInfo($class_name = null): void {
+    public function getPathInfo($class_name = null): ?SplFileInfo {
         throw new FileInfoException('getPathInfo not implemented', FileInfoException::NotImplemented);
     }
 

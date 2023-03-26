@@ -65,6 +65,10 @@ abstract class AbstractVariableObject implements TypeAwareInterface {
     }
 
     public function isInternalType($type) {
+        if (is_object($type)) {
+            $type = $type::class;
+        }
+
         return $this->isBuiltInType((string)$type) || \in_array(\mb_strtolower((string)$type), $this->types);
     }
 
